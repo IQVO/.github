@@ -105,6 +105,10 @@ flowchart TB
 
 ---
 
+## Disclaimer
+
+This project is a domain-driven design study. It is not associated with, endorsed by or affiliated with any company, and it uses no company's code, data, logos or trademarks. All names, figures and examples are illustrative or synthetic.
+
 <div align="center">
 
 Built and maintained by <a href="https://github.com/claudioed">@claudioed</a> as a Domain-Driven Design study project.
