@@ -30,16 +30,11 @@ Every service is an independently deployable Go module behind its own REST API, 
 ## Context Map
 
 ```mermaid
-flowchart TB
+flowchart LR
     subgraph WMS["WMS tier"]
         FL[facility-layout]
         INV[inventory-storage]
         PPM[process-path-management]
-        INB[inbound-receiving]
-        RET[returns-processing]
-        PM[product-master]
-        PFR[pick-face-replenishment]
-        SLO[slotting-optimization]
     end
 
     subgraph WES["WES tier"]
@@ -47,41 +42,16 @@ flowchart TB
         FE[fulfillment-execution]
         WFM[workforce-management]
         LP[labor-performance]
-        TI[task-interleaving]
-        EXC[exception-management]
-        WP[warehouse-planning]
     end
 
     subgraph EDGE["Order & network edge"]
         OM[order-management]
         NF[network-fulfillment<br/>ACL]
-        NIP[network-inventory-planning]
-    end
-
-    subgraph NET["Retail network"]
-        NT[node-topology]
-        NP[node-performance]
-        OA[offer-availability]
-        DP[delivery-promise]
-        OS[order-sourcing]
-        CO[customer-ordering]
-        LH[linehaul-transportation]
-        LM[last-mile-delivery]
-        VC[vendor-connectivity]
-        SI[seller-inbound]
-        ST[shipping-and-tracking]
     end
 
     subgraph SF["Storefront"]
         WEB[storefront-web]
         BFF[storefront-bff]
-        CHK[checkout]
-        CART[shopping-cart]
-        PRC[pricing]
-        PC[product-content]
-        PD[product-discovery]
-        PAY[customer-payments]
-        PPS[payment-provider-simulator]
     end
 
     OM -->|REST| INV
@@ -95,7 +65,7 @@ flowchart TB
     WEB --> BFF
 ```
 
-The diagram shows the relationships that are documented across contexts; the remaining integrations (Kafka topics and published REST contracts) are in the [EventCatalog](https://github.com/IQVO/ecosystem) and in [`warehouse-docs`](https://github.com/IQVO/warehouse-docs). Retail-network and storefront contexts follow the same rule as the warehouse ones: no live lookups into a sibling where a local, event-fed copy will do.
+The diagram is a core slice, not the whole estate: 38 contexts are listed below, and every integration between them (Kafka topics, published REST contracts, MCP tools) is in the [EventCatalog](https://github.com/IQVO/ecosystem) and in [`warehouse-docs`](https://github.com/IQVO/warehouse-docs). Retail-network and storefront contexts follow the same rule as the warehouse ones: no live lookups into a sibling where a local, event-fed copy will do.
 
 ## Bounded Contexts
 
